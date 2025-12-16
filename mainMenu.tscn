@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=3 uid="uid://b12h5djipv0ih"]
+
+[ext_resource type="Script" uid="uid://cntg58s6q44lq" path="res://mainMenu.gd" id="1_83s16"]
+[ext_resource type="FontFile" uid="uid://b75wn5elgg7um" path="res://Fonts/TimesNewPixel.ttf" id="1_wut1r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_83s16"]
+font = ExtResource("1_wut1r")
+font_size = 116
+
+[sub_resource type="Gradient" id="Gradient_wut1r"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.42767295, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_83s16"]
+fractal_type = 2
+fractal_lacunarity = 0.0
+cellular_distance_function = 1
+cellular_jitter = 2.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w7d22"]
+width = 1920
+height = 1080
+noise = SubResource("FastNoiseLite_83s16")
+color_ramp = SubResource("Gradient_wut1r")
+invert = true
+
+[node name="Main Menu" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_83s16")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 109
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "Title"
+label_settings = SubResource("LabelSettings_83s16")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+alignment = 1
+
+[node name="StartButton" type="Button" parent="HBoxContainer/VBoxContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94194543, 0.34806353, 0.41668445, 1)
+theme_override_fonts/font = ExtResource("1_wut1r")
+theme_override_font_sizes/font_size = 36
+text = "Start"
+flat = true
+
+[node name="SettingsButton" type="Button" parent="HBoxContainer/VBoxContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94194543, 0.34806353, 0.41668445, 1)
+theme_override_fonts/font = ExtResource("1_wut1r")
+theme_override_font_sizes/font_size = 36
+text = "Settings"
+flat = true
+
+[node name="QuitButton" type="Button" parent="HBoxContainer/VBoxContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94194543, 0.34806353, 0.41668445, 1)
+theme_override_colors/font_hover_color = Color(0.9843137, 0.62352943, 0.6392157, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_constants/outline_size = 170
+theme_override_fonts/font = ExtResource("1_wut1r")
+theme_override_font_sizes/font_size = 36
+text = "Quit"
+flat = true
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 2
+position = Vector2(577, 315)
+texture = SubResource("NoiseTexture2D_w7d22")
