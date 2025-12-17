@@ -1,28 +1,22 @@
 [gd_scene load_steps=7 format=3 uid="uid://b12h5djipv0ih"]
 
-[ext_resource type="Script" uid="uid://cntg58s6q44lq" path="res://mainMenu.gd" id="1_83s16"]
+[ext_resource type="Script" uid="uid://cntg58s6q44lq" path="res://Start Menu/mainMenu.gd" id="1_83s16"]
 [ext_resource type="FontFile" uid="uid://b75wn5elgg7um" path="res://Fonts/TimesNewPixel.ttf" id="1_wut1r"]
+[ext_resource type="FastNoiseLite" uid="uid://c0vh06iuyhykc" path="res://Start Menu/mainMenuNoise.tres" id="3_w7d22"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_83s16"]
 font = ExtResource("1_wut1r")
 font_size = 116
 
-[sub_resource type="Gradient" id="Gradient_wut1r"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0.42767295, 1)
+[sub_resource type="Gradient" id="Gradient_wc2lj"]
+offsets = PackedFloat32Array(0.3962264, 0.8490566)
+colors = PackedColorArray(0, 0, 0, 1, 0.28485027, 0.28485027, 0.28485027, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_83s16"]
-fractal_type = 2
-fractal_lacunarity = 0.0
-cellular_distance_function = 1
-cellular_jitter = 2.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w7d22"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wked4"]
 width = 1920
 height = 1080
-noise = SubResource("FastNoiseLite_83s16")
-color_ramp = SubResource("Gradient_wut1r")
-invert = true
+noise = ExtResource("3_w7d22")
+color_ramp = SubResource("Gradient_wc2lj")
 
 [node name="Main Menu" type="Control"]
 texture_filter = 1
@@ -87,6 +81,9 @@ flat = true
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1
-texture_filter = 2
-position = Vector2(577, 315)
-texture = SubResource("NoiseTexture2D_w7d22")
+position = Vector2(960, 540)
+texture = SubResource("NoiseTexture2D_wked4")
+
+[connection signal="button_down" from="HBoxContainer/VBoxContainer3/VBoxContainer/StartButton" to="." method="startButton"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer3/VBoxContainer/SettingsButton" to="." method="settingsButton"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer3/VBoxContainer/QuitButton" to="." method="quitButton"]
