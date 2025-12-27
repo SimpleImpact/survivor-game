@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://b12h5djipv0ih"]
 
-[ext_resource type="Script" uid="uid://cntg58s6q44lq" path="res://Start Menu/mainMenu.gd" id="1_83s16"]
+[ext_resource type="Script" uid="uid://cntg58s6q44lq" path="res://Scenes/Start Menu/mainMenu.gd" id="1_83s16"]
 [ext_resource type="FontFile" uid="uid://b75wn5elgg7um" path="res://Fonts/TimesNewPixel.ttf" id="1_wut1r"]
-[ext_resource type="FastNoiseLite" uid="uid://c0vh06iuyhykc" path="res://Start Menu/mainMenuNoise.tres" id="3_w7d22"]
+[ext_resource type="FastNoiseLite" uid="uid://c0vh06iuyhykc" path="res://Scenes/Start Menu/mainMenuNoise.tres" id="3_w7d22"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_83s16"]
 font = ExtResource("1_wut1r")
